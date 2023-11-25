@@ -8,11 +8,14 @@ Joins bloxflip rains via requests and is very fast. No browsers open, you can ju
 
 Use your brain and just run the main.py file.
 
-
 #### When I try to run it says: **Module Not Found**, how do i fix?
 
-You fix by running the command in your cmd prompt: pip install [the module that said it was not found]
+You fix by running the command in your cmd prompt: pip install (the module that said it was not found)
 
+
+#### It's saying: AttributeError: module 'websocket' has no attribute 'WebSocketApp'. Did you mean: 'WebSocket'?
+
+You can fix this by running the command in your cmd prompt: pip install websocket-client.
 
 
 #### What captcha services does this support?
