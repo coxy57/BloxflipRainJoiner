@@ -15,7 +15,6 @@ AUTH_TOKEN = ""
 # MORE SUPPORT SOON
 API_KEY = ""
 
-
 class HttpClientBase(http.client.HTTPSConnection):
     def __init__(self):
         super().__init__(host="api.bloxflip.com", port=443)
@@ -38,17 +37,20 @@ class BloxflipRain:
     def __init__(self):
         self.webconnect = BaseWebsocket(AUTH_TOKEN)
         self.webconnect.run_base()
+        self.solved = False
     def checkrain(self):
         while True:
             connection = httpBase.requester('/chat/history')
-            if connection['rain']['active']:
+            if connection['rain']['active'] and not self.solved:
                 captcha = solver.solve()
                 if "error" not in captcha:
                     print('Solved captcha: %s!' % captcha)
                     self.webconnect.join_rain_data(captcha)
-                    break
+                    self.solved = True
                 else:
                     print('An error has occured %s' % captcha)
+            else:
+                self.solved = False
             time.sleep(5)
 
 
