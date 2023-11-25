@@ -6,7 +6,14 @@ Joins bloxflip rains via requests and is very fast. No browsers open, you can ju
 
 #### How to use?
 
-Use your brain and just run the py files.
+Use your brain and just run the main.py file.
+
+
+#### When I try to run it says: **Module Not Found**, how do i fix?
+
+You fix by running the command in your cmd prompt: pip install [the module that said it was not found]
+
+
 
 #### What captcha services does this support?
 
