@@ -33,3 +33,5 @@ You can contact me through my discord: coxy.57
 - Faster
 - More Captcha Solvers
 
+GOAL: 15 stars
+
