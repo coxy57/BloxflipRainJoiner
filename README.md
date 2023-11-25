@@ -21,6 +21,10 @@ You can fix this by running the command in your cmd prompt: pip install websocke
 
 
 
+#### It's saying that SYSTEM IS BUSY, how do I fix this?
+
+Capsolver's system is probably overloaded currently. You need to wait a bit until it's fixed. For an ETA, you should join their discord.
+
 #### What captcha services does this support?
 
 Currently it only supports: Capsolver, but we will support more soon. You will need to deposit balance in anyone of these websites to be able to solve captchas.
