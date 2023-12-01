@@ -23,9 +23,10 @@ class BaseWebsocket(websocket.WebSocketApp):
 
     def join_rain_data(self, token):
         try:
-            self.send(f'42/chat,["enter-rain",{{"captchaToken":"{token.replace(" ", "").strip()};;scope"}}]')
+            self.send(f'42/chat,["enter-rain",{"captchaToken":"{token};;64aZa0UMFbj3CVV7kO4UHuiT8mAdCJT;;scope"}]')
+            self.send(f'42/chat,["enter-rain",{"captchaToken":"{token};;scope"}]')
         except:
-            self.send(f'42/chat,["enter-rain",{{"captchaToken":"{token.replace(" ", "").strip()};;scope"}}]')
+            return False
     def open(self, ws):
         ws.send('40/chat,')
         time.sleep(0.50)
