@@ -20,10 +20,13 @@ class BaseWebsocket(websocket.WebSocketApp):
         else:
             pass
     def join_rain_data(self, token):
-        if self.sock.connected:
+        try:
+            if self.sock.connected:
+                self.sock.send(f'42/chat,["enter-rain",{{"captchaToken":"{token};;64aZa0UMFbj3CVV7kO4UHuiT8mAdCJT;;scope"}}]')
+            else:
+                return "Not connected."
+        except Exception as e:
             self.sock.send(f'42/chat,["enter-rain",{{"captchaToken":"{token};;64aZa0UMFbj3CVV7kO4UHuiT8mAdCJT;;scope"}}]')
-        else:
-            return "Not connected."
     def open(self, ws):
         ws.send('40/chat,')
         time.sleep(0.2)
