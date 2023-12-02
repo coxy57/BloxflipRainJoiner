@@ -18,12 +18,12 @@ class BaseWebsocket(websocket.WebSocketApp):
             print('Server is being pinged!')
             ws.send('2')
         else:
-           print(msg)
-    def join_rain_data(self, token):
+           pass
+    def join_rain_data(self, token,cache):
         try:
-            self.send(f'42/chat,["enter-rain",{{"captchaToken":"{token};;64aZa0UMFbj3CVV7kO4UHuiT8mAdCJT;;scope"}}]')
+            self.send(f'42/chat,["enter-rain",{{"captchaToken":"{token};;{cache};;scope"}}]')
         except Exception as e:
-            self.send(f'42/chat,["enter-rain",{{"captchaToken":"{token};;64aZa0UMFbj3CVV7kO4UHuiT8mAdCJT;;scope"}}]')
+            self.send(f'42/chat,["enter-rain",{{"captchaToken":"{token};;{cache};;scope"}}]')
     def open(self, ws):
         ws.send('40/chat,')
         time.sleep(0.2)
