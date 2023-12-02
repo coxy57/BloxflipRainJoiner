@@ -34,7 +34,8 @@ Currently it only supports: Capsolver, but we will support more soon. You will n
 You can contact me through my discord: coxy.57
 ## Roadmap
 
-- Faster
+- Faster ☑️
+- Multiple Account Support
 - More Captcha Solvers
 
 GOAL: 15 stars
