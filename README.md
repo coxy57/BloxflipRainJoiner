@@ -6,7 +6,10 @@ Joins bloxflip rains via requests and is very fast. No browsers open, you can ju
 
 #### How to use?
 
-You must install python first from https://www.python.org/downloads/ (the lastest one) and select both options when installing. Install all the modules using pip install modulename and then run the main.py file.
+1. You must install python first from https://www.python.org/downloads/ (the lastest one) and select both options when installing.
+2. Paste the command: pip install -r requirements.txt in your cmd prompt (with administrator if needed) and press enter.
+3. Go to the main.py file and read all instructions.
+4. Then, run the main.py file.
 
 
 #### When I try to run it says: **Module Not Found**, how do i fix?
