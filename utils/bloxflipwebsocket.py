@@ -17,19 +17,16 @@ class BaseWebsocket(websocket.WebSocketApp):
         if msg == "3":
             print('Server is being pinged!')
             ws.send('2')
-
         else:
             pass
-
     def join_rain_data(self, token):
-        try:
-            self.send(f'42/chat,["enter-rain",{"captchaToken":"{token};;64aZa0UMFbj3CVV7kO4UHuiT8mAdCJT;;scope"}]')
-            self.send(f'42/chat,["enter-rain",{"captchaToken":"{token};;scope"}]')
-        except:
-            return False
+        if self.sock.connected:
+            self.sock.send(f'42/chat,["enter-rain",{{"captchaToken":"{token};;64aZa0UMFbj3CVV7kO4UHuiT8mAdCJT;;scope"}}]')
+        else:
+            return "Not connected."
     def open(self, ws):
         ws.send('40/chat,')
-        time.sleep(0.50)
+        time.sleep(0.2)
         ws.send(f'42/chat,["auth","{self.auth}"]')
     def on_close(self, ws, status_code, close_msg):
         print(close_msg, status_code)
