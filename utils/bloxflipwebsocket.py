@@ -14,7 +14,7 @@ class BaseWebsocket(websocket.WebSocketApp):
                                                                                          close_msg))
 
     def client_recv(self, ws, msg):
-        if msg == "3":
+        if msg.strip() == "3":
             print('Server is being pinged!')
             ws.send('2')
         else:
