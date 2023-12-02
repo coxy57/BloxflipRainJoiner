@@ -2,6 +2,7 @@ import http.client, json, threading
 import time
 from utils.bloxflipwebsocket import BaseWebsocket
 from utils.captcha import BaseSolver
+from colorama import Fore,init
 
 # Your bloxflip JWT
 # How to get:
@@ -14,6 +15,9 @@ AUTH_TOKEN = ""
 # YOUR API KEY MUST BE A KEY FROM CAPSOLVER.COM, YOU HAVE TO GET BALANCE AS WELL TO BE ABLE TO SOLVE.
 # MORE SUPPORT SOON
 API_KEY = ""
+
+#call init func
+init()
 
 class HttpClientBase(http.client.HTTPSConnection):
     def __init__(self):
@@ -44,7 +48,7 @@ class BloxflipRain:
             if connection['rain']['active'] and not self.solved:
                 captcha = solver.solve()
                 if "error" not in captcha:
-                    print('Solved captcha: %s!' % captcha)
+                    print(Fore.GREEN + 'Successfully solved captcha!')
                     self.webconnect.join_rain_data(captcha)
                     print('Joined rain!')
                     self.solved = True
@@ -58,6 +62,7 @@ class BloxflipRain:
 
 
 if __name__ == "__main__":
+    print(Fore.RED + "Running coxy57's auto joiner!")
     b = BloxflipRain()
     threading.Thread(target=b.checkrain).start()
 
