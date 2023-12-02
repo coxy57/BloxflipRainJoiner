@@ -8,6 +8,8 @@ class BaseSolver:
             'Content-Type': 'application/json'
         }
     def solve(self):
+        if self.api_key == "":
+            return "No APIKEY for capsolver set in the main.py file. Please update it."
         create_cap = requests.post('https://api.capsolver.com/createTask',json={
             "clientKey": self.api_key,
             "task": {
