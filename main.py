@@ -46,14 +46,18 @@ class BloxflipRain:
                 if "error" not in captcha:
                     print('Solved captcha: %s!' % captcha)
                     self.webconnect.join_rain_data(captcha)
+                    print('Joined rain!')
                     self.solved = True
                 else:
                     print('An error has occured %s' % captcha)
-            else:
+            elif not connection['rain']['active'] and self.solved:
                 self.solved = False
+            else:
+                pass
             time.sleep(5)
 
 
 if __name__ == "__main__":
     b = BloxflipRain()
     threading.Thread(target=b.checkrain).start()
+
