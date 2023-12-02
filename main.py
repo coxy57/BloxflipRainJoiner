@@ -64,7 +64,6 @@ class BloxflipRain:
             elif not connection['rain']['active'] and self.solved:
                 self.solved = False
             else:
-                x = secrets.token_hex(10)
                 pass
             time.sleep(5)
 
