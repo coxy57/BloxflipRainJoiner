@@ -3,6 +3,7 @@ import time
 from utils.bloxflipwebsocket import BaseWebsocket
 from utils.captcha import BaseSolver
 from colorama import Fore,init
+import secrets
 
 # TO INSTALL ALL MODULES
 # Paste pip install -r requirements.txt into your comand prompt and presse enter.
@@ -27,6 +28,7 @@ class HttpClientBase(http.client.HTTPSConnection):
         super().__init__(host="api.bloxflip.com", port=443)
         self.base_headers = {
             "Referer": "https://bloxflip.com/",
+            "x-auth-token": AUTH_TOKEN,
             "Content-Type": "application/x-www-form-urlencoded",
             "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/117.0.5938.108 Mobile/15E148 Safari/604.1"
         }
@@ -52,7 +54,9 @@ class BloxflipRain:
                 captcha = solver.solve()
                 if "error" not in captcha:
                     print(Fore.GREEN + 'Successfully solved captcha!')
-                    self.webconnect.join_rain_data(captcha)
+                    cache = secrets.token_hex(16)
+                    cache_result = httpBase.requester(f'/user?cache={x}')
+                    self.webconnect.join_rain_data(captcha,cache)
                     print('Joined rain!')
                     self.solved = True
                 else:
@@ -60,6 +64,7 @@ class BloxflipRain:
             elif not connection['rain']['active'] and self.solved:
                 self.solved = False
             else:
+                x = secrets.token_hex(10)
                 pass
             time.sleep(5)
 
@@ -68,4 +73,3 @@ if __name__ == "__main__":
     print(Fore.RED + "Running coxy57's auto joiner!")
     b = BloxflipRain()
     threading.Thread(target=b.checkrain).start()
-
