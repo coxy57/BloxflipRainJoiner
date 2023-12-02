@@ -4,6 +4,9 @@ from utils.bloxflipwebsocket import BaseWebsocket
 from utils.captcha import BaseSolver
 from colorama import Fore,init
 
+# TO INSTALL ALL MODULES
+# Paste pip install -r requirements.txt into your comand prompt and presse enter.
+
 # Your bloxflip JWT
 # How to get:
 # Go to bloxflip.com on PC
