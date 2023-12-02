@@ -54,7 +54,7 @@ class BloxflipRain:
                 captcha = solver.solve()
                 if "error" not in captcha:
                     print(Fore.GREEN + 'Successfully solved captcha!')
-                    cache = secrets.token_hex(16)
+                    cache = secrets.token_hex(10)
                     cache_result = httpBase.requester(f'/user?cache={cache}')
                     self.webconnect.join_rain_data(captcha,cache)
                     print('Joined rain!')
